@@ -9,6 +9,8 @@ echo " Enter Your password::"
 
 read -s PASSWORD
 
+echo "Your Password is $PASSWORD"
+
 
 
 
