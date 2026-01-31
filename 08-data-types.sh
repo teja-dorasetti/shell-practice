@@ -2,6 +2,7 @@
 
 NUM1=100
 NUM2=200
-SUM= $((NUM1+NUM2))
+
+SUM= $(($NUM1+$NUM2))
 
 echo "print sum of two numbers: $SUM"
