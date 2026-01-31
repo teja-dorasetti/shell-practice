@@ -2,7 +2,10 @@
 
 USERID=$(id -u)
 
-if [$USERID -ne 0]; then
-    echo "$USERID :is not and root user to install Nginx"
+if [ $USERID -ne 0 ]; then
+    echo "this is not a root user to install Nginx"
 
 fi    
+    echo "Installing nginx"
+
+    dnf install nginx -y 
