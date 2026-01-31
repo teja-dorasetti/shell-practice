@@ -1,7 +1,7 @@
 #! bin/bash
 
 echo "Enter you Username"
-Read USERNAME
+Read USER_NAME
 
-echo "user name is $USERNAME"
+echo "user name is $USER_NAME"
 
