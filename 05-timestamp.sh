@@ -1,5 +1,5 @@
 #! bin/bash
 
-TIMESTAMP=$(Date)
+TIMESTAMP=$(date)
 
 echo "Code Executed: $TIMESTAMP"
