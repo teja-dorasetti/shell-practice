@@ -9,4 +9,4 @@ echo "print sum of two numbers: $SUM"
 
 DEVOPS=("AWS" "Docker" "instance")
 
-echo " In DevOps course we have ${DEVOPS[@]}
+echo "In DevOps course we have: ${DEVOPS[@]}"
