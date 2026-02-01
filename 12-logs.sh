@@ -6,6 +6,7 @@ LOGS_FILE="/var/log/shell-script/$0.log"
 
 if [ $USERID -ne 0 ]; then
     echo "this is not a root user to install Nginx"
+    exit 1
 
 fi    
     mkdir -p $LOGS_FOLDER
