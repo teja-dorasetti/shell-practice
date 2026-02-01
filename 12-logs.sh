@@ -8,7 +8,7 @@ if [ $USERID -ne 0 ]; then
     echo "this is not a root user to install Nginx"
 
 fi    
-    mkdir -p $LOGS_FLODER
+    mkdir -p $LOGS_FOLDER
 
 # by defalut shell will not execute, only executed when called
 
