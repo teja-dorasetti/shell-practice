@@ -5,13 +5,12 @@ LOGS_FOLDER="/var/log/shell-script"
 LOGS_FILE="/var/log/shell-script/$0.log"
 
 if [ $USERID -ne 0 ]; then
-    echo "this is not a root user to install Nginx"
+    echo "please run this script with root user access"
     exit 1
 
 fi    
-    mkdir -p $LOGS_FOLDER
 
-# by defalut shell will not execute, only executed when called
+mkdir -p $LOGS_FOLDER
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
@@ -24,11 +23,12 @@ VALIDATE(){
     fi
 
 }
-    dnf install nginx -y $>> $LOGS_FILE
-    VALIDATE $? "Install Nginx"
+    
+dnf install nginx -y $>> $LOGS_FILE
+VALIDATE $? "Installing Nginx"
 
-    dnf install mysql -y $>> $LOGS_FILE
-    VALIDATE $? "Install Mysql"
+dnf install mysql -y $>> $LOGS_FILE
+VALIDATE $? "Installing Mysql"
 
-    dnf install nodejs -y $>> $LOGS_FILE
-    VALIDATE $? "Install nodejs"
+dnf install nodejs -y $>> $LOGS_FILE
+VALIDATE $? "Installing nodejs"
