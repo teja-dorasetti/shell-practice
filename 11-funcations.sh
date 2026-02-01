@@ -20,15 +20,11 @@ VALIDATE(){
     fi
 
 }
-    echo "Installing nginx"
-
     dnf install nginx -y 
+    VALIDATE $? "Install Nginx"
 
-if [ $? -ne 0 ]; then
+    dnf install mysql -y 
+    VALIDATE $? "Install Mysql"
 
-    echo "Installing Nginx ....failure"    
-    exit 1
-
-else 
-    echo "Installing Nginx....Success"
-fi
+    dnf install nodejs -y 
+    VALIDATE $? "Install nodejs"
