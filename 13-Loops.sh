@@ -24,7 +24,7 @@ VALIDATE(){
 
 }
     
-for package n $@ # $@ means all agruments passed [ sudo sh 13-loops.sh nginx nodejs mysql]
+for package in $@ # $@ means all agruments passed [ sudo sh 13-loops.sh nginx nodejs mysql]
 do
     dnf install $package -y &>> $LOGS_FILE
     VALIDATE $? "$package installation"
