@@ -1,7 +1,7 @@
 #! bin/bash
 
 set -e
-trap 'echo "There is error in line $LINENO, COMMAND: $BASH_COMMAND";' ERR
+trap 'echo "There is error in line $LINENO, COMMAND: $BASH_COMMAND"' ERR
 
 
 echo "Script started"
