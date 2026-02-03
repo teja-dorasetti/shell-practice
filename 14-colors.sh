@@ -7,6 +7,6 @@
 ## M= "\e[35m"
 ## C= "\e[36m"
 ## W= "\e[37m"
-## NC= "\e[0m"
+## N= "\e[0m"
 
-echo -e "$R hello world $NC, $B I'm learning linux shell scripting $NC"
+echo -e "$R Hello world $N, $B I'm learning linux shell scripting $N"
