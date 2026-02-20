@@ -49,3 +49,8 @@ log "Backup Started"
 log "Source Directory: $SOURCE_DIR"
 log "Destination Directory: $DEST_DIRECTORY"    
 log "Days: $DAYS"
+
+if [ -z "$FILES" ]; then
+    log "No files found for backup"
+    exit 0
+fi  
