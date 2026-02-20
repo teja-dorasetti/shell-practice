@@ -54,9 +54,26 @@ if [ -z $FILES ]; then
     log "No files found for backup"
     exit 0
 else
+    # app-logs-2024-06-01.log
     log "Files found for backup: $FILES"
     timestamp=$(date +%F-%H-%M-%S)
     ZIP_FILE_NAME="$DEST_DIRECTORY/backup-$timestamp.tar.gz"
     tar -czf $ZIP_FILE_NAME $FILES
     log "Backup completed: $ZIP_FILE_NAME"  
+
+    ### check archive file created or not, if created then remove the original files
+    if [ -f "$ZIP_FILE_NAME" ]; then
+    log "Removing original files"
+    rm -f $FILES
+    log "Original files removed"
+    while IFS= read -r filepath; do
+      # Process each line here
+      echo "Deleting file: $filepath"
+      rm -f $filepath
+      echo "Deleted file: $filepath"
+    done <<< $FILES
+else
+    log "Backup file not created, original files not removed"
+    exit 1
+    fi
 fi  
