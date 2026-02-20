@@ -19,7 +19,7 @@ fi
 mkdir -p $LOGS_FOLDER
 
 USAGE(){
-    echo -e "$R USAGE:: sudo backup <SOURCE_DIRECTORY> <BACKUP_DIRECTORY> $N"
+    echo -e "$R USAGE:: sudo backup <SOURCE_DIRECTORY> <BACKUP_DIRECTORY>[default 14 days] $N"
     exit 1
 }
 
