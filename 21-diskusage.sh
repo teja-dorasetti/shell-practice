@@ -18,9 +18,11 @@ do
     USAGE=$(echo $line | awk '{print $6}'| cut -d "%" -f1)
     PARTITION=$(echo $line | awk '{print $7}')
     if [ "$USAGE" -gt $USAGAE_THRESHOLD ]; then
-        log "Disk usage is above threshold: $USAGE% on partition: $PARTITION"
+        message="Disk usage for partition $PARTITION is at $USAGE% which is above the threshold of $USAGAE_THRESHOLD%"
+        log "$message"
     else
-        log "Disk usage is within threshold: $USAGE% on partition: $PARTITION"
+        message="Disk usage for partition $PARTITION is at $USAGE% which is below the threshold of $USAGAE_THRESHOLD%"
+        log "$message"
     fi
 done <<< "$DISK_USAGE"
 
