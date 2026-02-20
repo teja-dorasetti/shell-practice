@@ -17,6 +17,7 @@ While IFS= read -r line
 do
     USAGE=$(echo $line | awk '{print $6}'| cut -d "%" -f1)
     PARTITION=$(echo $line | awk '{print $7}')
+
     if [ "$USAGE" -gt $USAGAE_THRESHOLD ]; then
         message="Disk usage for partition $PARTITION is at $USAGE% which is above the threshold of $USAGAE_THRESHOLD%"
         log "$message"
@@ -26,3 +27,4 @@ do
     fi
 done <<< "$DISK_USAGE"
 
+echo -e "$G Disk usage check completed $N"
