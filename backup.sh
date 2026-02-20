@@ -29,11 +29,33 @@ if [ $# -ne 2 ]; then
 fi
 
 if [ ! -d "$SOURCE_DIR" ]; then
-    echo -e "$R Source directory $SOURCE_DIR does not exist $N" 
+    echo -e "$R Source directory: $SOURCE_DIR does not exist $N" 
     exit 1
 fi
 
 if [ ! -d "$DEST_DIRECTORY" ]; then
-    echo -e "$R Destination directory $DEST_DIRECTORY does not exist $N" 
+    echo -e "$R Destination directory: $DEST_DIRECTORY does not exist $N" 
     exit 1
 fi
+
+FILES=$(find $SOURCE_DIR -type f -mtime +$DAYS)
+if [ -z "$FILES" ]; then
+    echo -e "$Y No old backup files to remove $N" | tee -a $LOGS_FILE
+else
+    find $SOURCE_DIR -type f -mtime +$DAYS -exec rm -f {} \; &>>$LOGS_FILE
+    if [ $? -ne 0 ]; then
+        echo -e "$R Failed to remove old backup files $N" | tee -a $LOGS_FILE
+        exit 1
+    else
+        echo -e "$G Old backup files removed successfully $N" | tee -a $LOGS_FILE
+fi
+
+TIMESTAMP=$(date +%F-%H-%M-%S)
+BACKUP_FILE="$DEST_DIRECTORY/backup-$TIMESTAMP.tar.gz"
+tar -czf $BACKUP_FILE $SOURCE_DIR &>>$LOGS_FILE
+if [ $? -ne 0 ]; then
+    echo -e "$R Failed to create backup file $N" | tee -a $LOGS_FILE
+    exit 1
+else
+    echo -e "$G Backup file created successfully: $BACKUP_FILE $N" | tee -a $LOGS_FILE
+fi  
