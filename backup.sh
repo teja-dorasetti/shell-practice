@@ -53,4 +53,10 @@ log "Days: $DAYS"
 if [ -z $FILES ]; then
     log "No files found for backup"
     exit 0
+else
+    log "Files found for backup: $FILES"
+    timestamp=$(date +%F-%H-%M-%S)
+    ZIP_FILE_NAME="$DEST_DIRECTORY/backup-$timestamp.tar.gz"
+    tar -czf $ZIP_FILE_NAME $FILES
+    log "Backup completed: $ZIP_FILE_NAME"  
 fi  
